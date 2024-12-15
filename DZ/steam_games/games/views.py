@@ -7,7 +7,7 @@ from openid.store.memstore import MemoryStore
 from .models import Profile
 
 
-STEAM_API_KEY = "2C2E7B28D2060F91441D5CF547950CD0"
+STEAM_API_KEY = "Enter your key here"
 STEAM_OPENID_URL = "https://steamcommunity.com/openid"
 
 
@@ -68,25 +68,6 @@ def steam_callback(request):
 
     except HTTPFetchingError as e:
         return HttpResponse(f"Ошибка при соединении с Steam: {str(e)}", status=500)
-
-
-# def get_profile_info(steam_id):
-#     url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/"
-#     params = {
-#         'key': STEAM_API_KEY,
-#         'steamids': steam_id,
-#     }
-#     response = requests.get(url, params=params)
-#     if response.status_code != 200:
-#         print(f"Failed to fetch friend list for Steam ID {steam_id}. Status code: {response.status_code}")
-#         return []
-#     data = response.json()['response']['players'][0]
-#     profile_info = {
-#         'steam_id': steam_id,
-#         'avatar_url': data.get('avatarmedium', ''),
-#         'nickname': data.get('personaname', 'noname')
-#     }
-#     return profile_info
 
 
 def get_friend_list(steam_id):
